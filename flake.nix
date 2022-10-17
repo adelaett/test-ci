@@ -14,7 +14,7 @@
         rec {
           packages = {
             hello = pkgs.hello;
-            default = hello;
+            default = packages.hello;
           };
           devShell = pkgs.mkShell {
             inputsFrom = [packages.hello];
