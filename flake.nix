@@ -13,11 +13,11 @@
       in
         rec {
           packages = {
-            hello = pkgs.hello;
-            default = packages.hello;
+            python3.pkgs.jupyterlab = pkgs.python3.pkgs.jupyterlab;
+            default = packages.python3.pkgs.jupyterlab;
           };
           devShell = pkgs.mkShell {
-            inputsFrom = [packages.hello];
+            inputsFrom = [packages.default];
             buildInputs = [
               pkgs.inotify-tools
             ];
