@@ -14,13 +14,17 @@
         rec {
           packages = {
             hello = pkgs.hello;
+            default = hello;
           };
-          defaultPackage = packages.hello;
           devShell = pkgs.mkShell {
             inputsFrom = [packages.hello];
             buildInputs = [
               pkgs.inotify-tools
             ];
+          };
+          hydraJobs = {
+            main_package=packages.default;
+            dev_shell=devShell;
           };
         }
     );
